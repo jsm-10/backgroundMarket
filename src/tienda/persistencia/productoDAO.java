@@ -41,4 +41,21 @@ public final class productoDAO extends DAO{
                 throw e;
         }
     }
+    public Producto buscarProducto (String nombreProducto) throws Exception{
+        try {
+            String sql = "SELECT * FROM producto" + "Whre nombreProducto ='" + nombreProducto + "'";
+            consultarBase(sql);
+            Producto producto = null;
+            while (resultado.next()) {                
+                producto = new Producto();
+                producto.setCodigo(0);
+                producto.setNombre(sql);
+                producto.setPrecio(0);
+                producto.setCodigoFabricante(0);
+            }
+        } catch (Exception e) {
+            desconectarBase();
+            throw e;
+        }
+    }
 }
