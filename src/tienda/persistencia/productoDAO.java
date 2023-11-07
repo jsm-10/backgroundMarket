@@ -1,6 +1,8 @@
 
 package tienda.persistencia;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import tienda.entidades.Producto;
 
 
@@ -43,19 +45,43 @@ public final class productoDAO extends DAO{
     }
     public Producto buscarProducto (String nombreProducto) throws Exception{
         try {
-            String sql = "SELECT * FROM producto" + "Whre nombreProducto ='" + nombreProducto + "'";
+            String sql = "SELECT * FROM producto" + "WHERE nombre ='" + nombreProducto + "'";
             consultarBase(sql);
             Producto producto = null;
             while (resultado.next()) {                
                 producto = new Producto();
-                producto.setCodigo(0);
-                producto.setNombre(sql);
-                producto.setPrecio(0);
-                producto.setCodigoFabricante(0);
+                producto.setCodigo(resultado.getInt(1));
+                producto.setNombre(resultado.getString(2));
+                producto.setPrecio(resultado.getDouble(3));
+                producto.setCodigoFabricante(resultado.getInt(4));
             }
+            desconectarBase();
+            return producto;
         } catch (Exception e) {
             desconectarBase();
             throw e;
         }
     }
+    public Collection<Producto> listarProductos() throws Exception{
+        try {
+            String sql = "SELECT nombre, precio FROM  producto";
+            consultarBase(sql);
+            Producto producto = null;
+            Collection <Producto> productos = new ArrayList();
+            while (resultado.next()) {
+                producto = new Producto();
+                producto.setNombre(resultado.getString(1));
+                producto.setPrecio(resultado.getDouble(2));
+                productos.add(producto);
+            }
+            desconectarBase();
+            return productos;
+        } catch (Exception e) {
+            e.printStackTrace();
+            desconectarBase();
+            throw new Exception("Error de Sistema");
+        }
+        
+    }
+
 }
