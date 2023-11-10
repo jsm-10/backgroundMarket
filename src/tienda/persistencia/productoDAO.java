@@ -45,7 +45,7 @@ public final class productoDAO extends DAO{
     }
     public Producto buscarProducto (String nombreProducto) throws Exception{
         try {
-            String sql = "SELECT * FROM producto" + "WHERE nombre ='" + nombreProducto + "'";
+            String sql = "SELECT * FROM producto WHERE nombre ='" + nombreProducto + "'";
             consultarBase(sql);
             Producto producto = null;
             while (resultado.next()) {                
