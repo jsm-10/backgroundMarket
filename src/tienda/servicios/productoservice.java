@@ -19,7 +19,7 @@ public class productoservice {
         this.dao = new productoDAO();
         
     }
-    public void crearProducto (String nombre, double precio) throws Exception {
+    public void crearProducto (String nombre, double precio, int codigoFabricante) throws Exception {
        try {
        if (nombre == null || nombre.trim().isEmpty()) {
             throw new Exception("Debes indicar el producto a inscribir");
@@ -33,6 +33,7 @@ public class productoservice {
         Producto producto = new Producto();
         producto.setNombre(nombre);
         producto.setPrecio(precio);
+        producto.setCodigoFabricante(codigoFabricante);
         dao.guardarProducto(producto);
     }catch(Exception e){
     throw e;

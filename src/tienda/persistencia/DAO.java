@@ -52,6 +52,7 @@ public  class DAO {
             sentencia.executeUpdate(sql);
         
     }catch(ClassNotFoundException | SQLException ex) {
+        conexion.setAutoCommit(false);
         conexion.rollback();
         throw ex; 
     }finally{
