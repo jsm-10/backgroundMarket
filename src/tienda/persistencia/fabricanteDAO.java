@@ -19,4 +19,18 @@ public final class fabricanteDAO extends DAO {
             desconectarBase();
         }
     }
+    public void modificarFabricante(Fabricante fabricante) throws Exception{
+        try {
+            if(fabricante == null){
+                throw new Exception ("debe indicar el fabricante a modificar");
+            }
+            String sql = "UPDATE fabricante SET nombre = '" + fabricante.getNombre() + "' WHERE codigo = '" + fabricante.getidFab() + "'";
+            insertarModificarEliminar(sql);
+        } catch (Exception e) {
+            throw e;
+        }finally{
+            desconectarBase();
+     
+        }
+    }
 }

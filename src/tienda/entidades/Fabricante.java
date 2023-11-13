@@ -6,8 +6,8 @@ public class Fabricante {
     private int idFab;
     private String nombre;
 
-    public Fabricante(int codigoFab, String nombre) {
-        this.idFab = codigoFab;
+    public Fabricante(int idFab, String nombre) {
+        this.idFab = idFab;
         this.nombre = nombre;
     }
 
@@ -29,6 +29,5 @@ public class Fabricante {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
     
 }
