@@ -4,6 +4,7 @@
  */
 package tienda.servicios;
 
+import java.util.Collection;
 import tienda.entidades.Producto;
 import tienda.persistencia.productoDAO;
 
@@ -38,5 +39,46 @@ public class productoservice {
     }catch(Exception e){
     throw e;
 }
-}   
+}
+    public Collection<Producto> listarProductos () throws Exception{
+        try {
+            Collection<Producto> productos = dao.listarProductos();
+            
+            return productos;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+    public void imprimirNproductos () throws Exception{
+        try {
+            Collection<Producto> productos = listarProductos();
+            if (productos.isEmpty()) {
+                throw new Exception("No existen productos a listar");
+            }else{
+                for (Producto x : productos) {
+                    System.out.println(x.getNombre());
+                    
+                }
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    public void imprimirProductos () throws Exception{
+        try {
+            Collection<Producto> productos = listarProductos();
+            if (productos.isEmpty()) {
+                throw new Exception("No existen productos a listar");
+            }else{
+                for (Producto x : productos) {
+                    System.out.println(x.getNombre());
+                    System.out.println(x.getPrecio());
+                    
+                }
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }
