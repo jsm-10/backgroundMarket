@@ -37,16 +37,54 @@ public class Tienda {
             case 1: System.out.println("Aqui van los nombres ------------------------------------");
                 try {
                     ProductoService.imprimirNproductos();
+                    break;
                 } catch (Exception e) {
                     throw new Exception ("Surgio un error al imprimir los nombres" + e.getMessage());
                 }
             case 2: System.out.println("Aqui van los nombres y sus precios ------------------------------------");
                 try {
                     ProductoService.imprimirProductos();
+                    break;
                 } catch (Exception e) {
                     throw new Exception ("Surgio un error al imprimir los nombres y sus precios" + e.getMessage());
                 }
             case 3: System.out.println("Productos con precio entre 120 y 202 ");
+                try {
+                    ProductoService.Prodprom();
+                    break;
+                } catch (Exception e) {
+                    throw new Exception("Surgio un error al establecer los precios entre parametros");
+                } 
+            case 4: System.out.println("Listar todos los productos portatiles de la tabla");
+                try {
+                    ProductoService.Prodsport();
+                    break;
+                } catch (Exception e) {
+                    throw new Exception ("No se pudo traer los productos con la palabra portatil");
+                }
+            case 5: System.out.println("Aqui va el producto mas barato ------------------------------");
+                    try{
+                        System.out.println(ProductoService.ProdBar());
+                        break;
+                    }catch (Exception e){
+                        throw new Exception("No se pudo determinar el producto mas barato");
+                    }
+            case 6: System.out.println("Ingresar un producto a la base de datos");
+                    try {
+                        System.out.println("Ingrese nombre, precio y codigo de fabricante en ese orden");
+                        String nombre;
+                        double precio;
+                        int codFabricante;
+                        
+                        nombre= sc.next();
+                        precio = sc.nextDouble();
+                        codFabricante = sc.nextInt();
+                    ProductoService.crearProducto(nombre, precio, codFabricante);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw new Exception ("No se pudo crear el producto");
+                }
+            
         }
        
 
