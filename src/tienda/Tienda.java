@@ -84,7 +84,29 @@ public class Tienda {
                     e.printStackTrace();
                     throw new Exception ("No se pudo crear el producto");
                 }
-            
+            case 7 : System.out.println("Ingresa un fabricante a la base de datos");
+                    try {
+                        System.out.println("ingrese nombre del fabricante");
+                        String nombre;
+                        nombre= sc.next();
+                        FabricanteService.crearFabricante(nombre);
+                        break;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw new Exception ("No se pudo crear el nuevo fabricante");
+                }
+            case 8: System.out.println("Edita un producto de la base de datos a eleccion");
+                     try {
+                         System.out.println("Seleccione el producto que desea modificar: ");
+                         String nombre;
+                         nombre = sc.next();
+                         ProductoService.ModProd(nombre);
+                         break;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw e;
+                }
+            case 9: System.out.println("Se cerro el programa");         
         }
        
 

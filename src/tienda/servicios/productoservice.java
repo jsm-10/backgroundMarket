@@ -6,6 +6,7 @@ package tienda.servicios;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Scanner;
 import tienda.entidades.Producto;
 import tienda.persistencia.productoDAO;
 
@@ -133,6 +134,25 @@ public class productoservice {
 
     return producto;
 }
+   public void ModProd(String nombre) throws Exception{
+       try {
+        Scanner sc = new Scanner(System.in);   
+        Producto producto = null;
+        producto = dao.buscarProducto(nombre);
+           System.out.println("Establezca el precio a modificar: ");
+           double precio;
+           precio = sc.nextDouble();
+        dao.modificarProducto(producto, precio);
+           System.out.println("Precio modificado del siguiente producto:" + producto.getNombre() + " al siguiente precio: " + producto.getPrecio());
+       } catch (Exception e) {
+           e.printStackTrace();
+           throw e;
+       }
+ 
+       
+       
+   }    
+       
 
   
     

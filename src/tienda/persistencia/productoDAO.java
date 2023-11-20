@@ -21,11 +21,12 @@ public final class productoDAO extends DAO{
             throw e;
         }
     }
-    public void modificarProducto (Producto producto) throws Exception{
+    public void modificarProducto (Producto producto, double nuevoPrecio) throws Exception{
         try {
             if(producto == null){
                 throw new Exception ("El producto no se encuentra"); 
             }
+            producto.setPrecio(nuevoPrecio);
             String sql = "UPDATE producto SET precio = '" + producto.getPrecio() + "' WHERE codigo = '" + producto.getCodigo() + "'";
             insertarModificarEliminar(sql);
 
